@@ -1,5 +1,6 @@
 package pro04;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class MemberApp {
@@ -57,6 +58,13 @@ public class MemberApp {
 		// 현재 멤버 리스트 출력
 		printAllMemebrList();
 		
+		
+		try {
+			dao.con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	

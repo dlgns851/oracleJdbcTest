@@ -1,5 +1,7 @@
 package pro05;
 
+import java.util.Scanner;
+
 public class BookShopApp {
 
 	public static void main(String[] args) {
