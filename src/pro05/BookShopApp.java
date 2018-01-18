@@ -1,6 +1,9 @@
 package pro05;
 
+import java.util.List;
 import java.util.Scanner;
+
+import pro04.MemberVo;
 
 public class BookShopApp {
 
@@ -57,6 +60,8 @@ public class BookShopApp {
 		System.out.print("대여 하고 싶은 책의 번호를 입력하세요.:");
 		int num = key.nextInt();
 		
+		dao.rent(num);
+		key.close();
 		/*
 		 * 여기에 입력받은 책번호와 일치하는  BookShopDao의 rent()를 호출하는 코드를 작성하세요.
 		 *  
@@ -67,6 +72,24 @@ public class BookShopApp {
 	
 	public static void displayBookInfo() {
 		System.out.println("*****도서 정보 출력하기******");
+		BookShopDao dao = new BookShopDao();
+		List<BookVo> list = dao.getListAll();
+		 
+		
+
+		
+		for(int i=0; i<list.size(); i++) {
+			BookVo vo = list.get(i);
+			
+			System.out.print("책 제목:" + vo.getTitle()+" 작가:"+vo.getAuthorName());
+			
+			if (vo.getStateCode().equals("1"))
+				System.out.print(" 대여유무: 재고있음");
+			else if(vo.getStateCode().equals("0")) 
+				System.out.print(" 대여유무: 대여중");
+			
+			System.out.println("");
+		}
 	}	
 
 }
